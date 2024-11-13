@@ -1,4 +1,4 @@
-# Huffman-Coding
+# Ex-11-Huffman-Coding
 ## Aim
 To implement Huffman coding to compress the data using Python.
 
@@ -6,31 +6,26 @@ To implement Huffman coding to compress the data using Python.
 1. Anaconda - Python 3.7
 
 ## Algorithm:
-Step1: Get the input string
+### Step1:
 
-Step2: Create tree nodes
+Get the input string
+### Step2:
 
-Step3: Main function to implement huffman coding
+Create tree nodes
+### Step3:
 
-Step4: calculate frequency of occurence
+Main function to implement huffman coding
+### Step4:
 
-Step5: print the characters and its huffmancode
-
-
+calculate frequency of occurence
+### Step5:
+print the characters and its huffmancode
  
 ## Program:
+
+### Get the input String
 ```
-NAME: Ashwin Kumar S
-REG.No:212222240013
-
-```
-
-``` 
-# Get the input String
-string ="ASHWIN"
-
-
-# Create tree nodes
+string = 'pravin'
 class NodeTree(object):
     def __init__(self, left=None, right=None): 
         self.left = left
@@ -41,10 +36,11 @@ class NodeTree(object):
         return (self.left,self.right)
     def __str__(self):
         return '%s %s' %(self.left,self.right)
+```
 
 
-
-# Main function to implement huffman coding
+### Create tree nodes
+```
 def huffman_code_tree (node, left=True, binString=''):
     if type(node) is str:
         return {node: binString}
@@ -53,10 +49,11 @@ def huffman_code_tree (node, left=True, binString=''):
     d.update(huffman_code_tree (l, True, binString + '0'))
     d.update(huffman_code_tree (r, False, binString + '1'))
     return d
+```
 
 
-
-# Calculate frequency of occurrence
+### Main function to implement huffman coding
+```
 freq = {}
 for c in string:
     if c in freq:
@@ -65,6 +62,11 @@ for c in string:
         freq[c] = 1
 freq = sorted(freq.items(), key=lambda x: x[1], reverse=True)
 nodes=freq
+```
+
+
+### Calculate frequency of occurrence
+```
 while len(nodes)>1:
     (key1,c1)=nodes[-1]
     (key2,c2)=nodes[-2]
@@ -72,10 +74,13 @@ while len(nodes)>1:
     node = NodeTree (key1, key2)
     nodes.append((node,c1 + c2))
     nodes = sorted (nodes, key=lambda x: x[1], reverse=True)
+```
 
 
 
-# Print the characters and its huffmancode
+### Print the characters and its huffmancode
+
+```
 huffmanCode=huffman_code_tree(nodes[0][0])
 print(' Char | Huffman code ') 
 print('----------------------')
@@ -83,10 +88,12 @@ for (char, frequency) in freq:
     print('%-4r|%12s'%(char,huffmanCode[char]))
 
 ```
+
+
+
 ## Output:
 
-### Print the characters and its huffmancode
-![image](https://github.com/user-attachments/assets/71572bc9-8d64-48d9-9831-a9a5b733f164)
+![WhatsApp Image 2024-11-13 at 16 08 02_306b6ea0](https://github.com/user-attachments/assets/aa322aa8-22c7-4f2f-94ea-1f4b7f58ba34)
 
 
 
